@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chor Bazzar</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header>
+        <h1>Chor Bazzar</h1>
+        <p>Everything you need, all in one place!</p>
+    </header>
+
+    <main class="container">
+
+        <section class="products-side">
+            <h2>Our Products</h2>
+
+            <div class="filters">
+                <input type="text" id="search" placeholder="Search products..." oninput="showProducts()">
+
+                <select id="category" onchange="showProducts()">
+                    <option value="all">All Categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Stationery">Stationery</option>
+                    <option value="Bags">Bags</option>
+                    <option value="Accessories">Accessories</option>
+                </select>
+
+                <select id="sort" onchange="showProducts()">
+                    <option value="none">Sort By</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                    <option value="name">Name: A to Z</option>
+                </select>
+            </div>
+
+            <div id="productList" class="product-list"></div>
+        </section>
+
+        <aside class="cart-side">
+            <h2>🛒 Your Cart</h2>
+
+            <div id="cartList"></div>
+
+            <div class="coupon">
+                <h3>Discount Coupon</h3>
+                <input type="text" id="couponInput" placeholder="Enter coupon code">
+                <button onclick="applyCoupon()">Apply</button>
+                <p id="couponMsg"></p>
+                <small>Try SAVE10 or FLAT100</small>
+            </div>
+
+            <div class="price-details">
+                <p>Subtotal: <span>₹<span id="subtotal">0</span></span></p>
+                <p>Discount: <span>₹<span id="discount">0</span></span></p>
+                <h3>Total: <span>₹<span id="total">0</span></span></h3>
+            </div>
+
+            <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+        </aside>
+
+    </main>
+
+    <div id="checkoutBox" class="checkout-box">
+        <div class="checkout-content">
+            <h2>Checkout</h2>
+            <p>Enter your details to place your order.</p>
+
+            <form onsubmit="placeOrder(event)">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+
+                <label for="address">Delivery Address</label>
+                <textarea id="address" placeholder="Enter your address" required></textarea>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number"
+                       pattern="[0-9]{10}" maxlength="10" required>
+
+                <h3>Amount to Pay: ₹<span id="payAmount">0</span></h3>
+
+                <button type="submit" class="checkout-btn">Place Order</button>
+                <button type="button" class="cancel-btn" onclick="closeCheckout()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Chor Bazzar | Mini E-Commerce Project</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
